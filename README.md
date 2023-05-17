@@ -75,9 +75,13 @@ FLOPS | 3.9 G |**0.1 G** |0.7 G
 Param. |135.3 M | **4.0 M** | 6.9 M
 
 From previous table, `VGG16` has higher accuracy among models. 
+
 However, you can use `EfficientNet` with less parameters and FLOPS copmared to other models. with little decreasing in accuracy.
+
 Crateria of Choosing model depends on the your application. There's a trade off between `speed` and `accuracy`
+
 In my Case study, I'll choose `EfficientNet`, It achieves a good balance between model size and performance
+
 
 ## **Future Works**
 * Choose Large Dataset 
