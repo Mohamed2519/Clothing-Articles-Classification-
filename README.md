@@ -28,11 +28,13 @@ Calculate FLOPS and MACCs for each model using `flopth` library
 
 
 ## Steps
-1. **Install Requirements**
+1. **Download the dataset in `data` folder**
+
+2. **Install Requirements**
 ```shell
 pip install -r requirements.txt
 ```
-2. **Data Preprocessing**
+3. **Data Preprocessing**
 ```shell
 python data_preprocessing.py
 ```
@@ -41,7 +43,7 @@ python data_preprocessing.py
   * filter dataset from minor classes (less than 900 images) to avoid data imbalance.
   * after filteration it becomes 11 classes
   * add column for images directory
-3. **Training** 
+4. **Training** 
 ```shell
 python main.py
 ```
@@ -63,10 +65,10 @@ Train each network with configurations:
 
   `optimizer` SGD
 
-4. Results
+5. Results
 
 
- \  | VGG16 | EfficientNet | DenseNet
+ _  | VGG16 | EfficientNet | DenseNet
 --- | --- | --- | ---
 Accuracy | **86.88%**| 84.28%|83.12
 
