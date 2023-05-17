@@ -37,15 +37,15 @@ pip install -r requirements.txt
 python data_preprocessing.py
 ```
 
-  * Read csv file of dataset 
-  * filter dataset from minor classes (less than 900 image) to avoid data imbalance.
-  * after filteration it become 11 class
+  * Read `.csv` file of the dataset 
+  * filter dataset from minor classes (less than 900 images) to avoid data imbalance.
+  * after filteration it becomes 11 classes
   * add column for images directory
 3. **Training** 
 ```shell
 python training.py
 ```
-  * `dataLoader.py` Building Custom DataLoader
+  * `dataLoader.py` Building DataLoader
   * Image size (112,112,3)
   * Data Augumentation (`RandomCrop`,`RandomHorizontalFlip`)
   * `build_models.py` for building models  
