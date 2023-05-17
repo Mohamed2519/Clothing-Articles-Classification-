@@ -36,9 +36,8 @@ pip install -r requirements.txt
 ```
 3. **Data Preprocessing**
 ```shell
-cd src
 
-python data_preprocessing.py --imgs_per_cls 900 --vis False
+python src/data_preprocessing.py --imgs_per_cls 900 --vis False
 ```
 
   * Read `.csv` file of the dataset 
@@ -49,7 +48,7 @@ python data_preprocessing.py --imgs_per_cls 900 --vis False
 
 4. **Training** 
 ```shell
-python main.py --model efficientnet --bs 16 --e 10 --imgsz 112
+python src/main.py --model efficientnet --bs 16 --e 10 --imgsz 112
 ```
   * `clothes_dataset.py` Building DataLoader
   * Image size (112,112,3)
@@ -77,7 +76,7 @@ python main.py --model efficientnet --bs 16 --e 10 --imgsz 112
   Using `flopth` library to calculate  `FLOPS` and `number of Parameters`
 
 ```shell
-python model_capacity.py --model efficientnet --n_cls 11 --imgsz 112
+python src/model_capacity.py --model efficientnet --n_cls 11 --imgsz 112
 ```
 
 

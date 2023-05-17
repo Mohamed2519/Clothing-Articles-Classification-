@@ -6,7 +6,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from PIL import Image
-import random
+import random 
 import numpy as np
 import argparse
 from sklearn.model_selection import train_test_split
@@ -16,7 +16,7 @@ def parsing():
   parser = argparse.ArgumentParser(description='Data Preprocessing')
 
   # Add arguments
-  parser.add_argument('--csv_dir', type=str, default='../data/fashion-product-images-small/styles.csv', help='dir of csv data file')
+  parser.add_argument('--csv_dir', type=str, default='data/styles.csv', help='dir of csv data file')
   parser.add_argument('--imgs_per_cls', type=int, default=900, help='min images per class')
   parser.add_argument('--vis', type=bool, default=False, help='visualize randm 10 samples of the data')
 
@@ -49,7 +49,7 @@ if __name__ == "__main__":
   df = df[df['articleType'].isin(cloth_used)]
 
   #Add column for image directory
-  base_path='../data/fashion-product-images-small/images/'
+  base_path='data/images/'
   df['path']=df['id'].apply(lambda x: str(base_path + str(x)+ '.jpg'))
   df=df.sample(frac=1).reset_index(drop=True)
 
@@ -60,10 +60,10 @@ if __name__ == "__main__":
   train_df, valid_df = train_test_split(train_df, test_size=0.2,stratify = train_df['articleType'], random_state=42)
 
   # saved filtred Dataframe
-  df.to_csv('../data/fashion_dataset/filtered_data.csv', index=False)
-  train_df.to_csv('../data/fashion_dataset/train_data.csv', index=False)
-  valid_df.to_csv('../data/fashion_dataset/valid_data.csv', index=False)
-  test_df.to_csv('../data/fashion_dataset/test_data.csv', index=False)
+  df.to_csv('data/filtered_data.csv', index=False)
+  train_df.to_csv('data/train_data.csv', index=False)
+  valid_df.to_csv('data/valid_data.csv', index=False)
+  test_df.to_csv('data/test_data.csv', index=False)
 
 
   ############################ For Visualizing images ############################

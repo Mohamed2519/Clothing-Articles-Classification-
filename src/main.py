@@ -35,9 +35,9 @@ if __name__ == "__main__":
   args = parsing()
   BS = args.bs
   EPOCHS = args.e
-  train_df = pd.read_csv('../data/fashion_dataset/train_data.csv')
-  valid_df = pd.read_csv('../data/fashion_dataset/valid_data.csv')
-  test_df = pd.read_csv('../data/fashion_dataset/test_data.csv')
+  train_df = pd.read_csv('data/train_data.csv')
+  valid_df = pd.read_csv('data/valid_data.csv')
+  test_df = pd.read_csv('data/test_data.csv')
 
   classes = train_df['articleType'].unique().tolist()
   num_classes = args.n_cls

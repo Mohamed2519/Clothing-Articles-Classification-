@@ -3,4 +3,4 @@ numpy
 matplotlib
 Pillow
 torch
-flopth
+scikit-learn
