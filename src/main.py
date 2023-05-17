@@ -17,7 +17,7 @@ if __name__ == "__main__":
 
   BS=16
   EPOCHS = 10
-  data = pd.read_csv('data/fashion_dataset/filtered_data.csv')#, header = 'infer',error_bad_lines = False)
+  data = pd.read_csv('../data/fashion_dataset/filtered_data.csv')#, header = 'infer',error_bad_lines = False)
 
   classes = data['articleType'].unique().tolist()
   num_classes = len(classes) 
@@ -86,7 +86,7 @@ if __name__ == "__main__":
       optimizer,
       train_dataloader,
       valid_dataloader,
-      save_file_name='models/model.pt',
+      save_file_name='../models/model.pt',
       max_epochs_stop=5,
       n_epochs=EPOCHS,
       print_every=1)
