@@ -43,13 +43,13 @@ python data_preprocessing.py
   * add column for images directory
 3. **Training** 
 ```shell
-python training.py
+python main.py
 ```
-  * `dataLoader.py` Building DataLoader
+  * `clothes_dataset.py` Building DataLoader
   * Image size (112,112,3)
   * Data Augumentation (`RandomCrop`,`RandomHorizontalFlip`)
   * `build_models.py` for building models  
-  * `train_eval.py` contain the main function for `Train` & `Eval`
+  * `train_utils.py` contain the main function for `Train` & `Eval`
 
   **Crateria of training**:
 For choosing the best and proper model, I choose `Accuracy` as a metric of Evaluation.

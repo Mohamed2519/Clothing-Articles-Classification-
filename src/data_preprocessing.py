@@ -10,7 +10,7 @@ import random
 import numpy as np
 
 #reading the styles.csv file
-df = pd.read_csv('/content/fashion-product-images-small/styles.csv', header = 'infer',error_bad_lines = False)
+df = pd.read_csv('data/fashion-product-images-small/styles.csv', header = 'infer',error_bad_lines = False)
 df = df[['id','articleType']] 
 vc=df['articleType'].value_counts()
 #Choose only classes that have more than 900 image to avoid data unbalanced
@@ -30,11 +30,11 @@ print('number of clothes used: ',len(cloth_used))
 df = df[df['articleType'].isin(cloth_used)]
 
 #Add column for image directory
-base_path='/content/fashion-product-images-small/images/'
+base_path='data/fashion-product-images-small/images/'
 df['path']=df['id'].apply(lambda x: str(base_path + str(x)+ '.jpg'))
 df=df.sample(frac=1).reset_index(drop=True)
 # saved filtred Dataframe
-df.to_csv('/content/drive/MyDrive/fashion_dataset/filtered_data.csv', index=False)
+df.to_csv('data/fashion_dataset/filtered_data.csv', index=False)
 
 ############################For Visualizing images############################
 

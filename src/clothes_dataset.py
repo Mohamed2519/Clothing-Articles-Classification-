@@ -7,7 +7,7 @@ import numpy as np
 import torch
 
 
-class ClothesDataLoader(Dataset):
+class ClothesDataset(Dataset):
     def __init__(self, df,label_dict, transform=None):
         self.df = df
         self.transform = transform

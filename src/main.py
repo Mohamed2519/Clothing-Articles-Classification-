@@ -5,8 +5,8 @@ import torch.optim as optim
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from train_eval import train
-from dataLoader import ClothesDataLoader
+from train_utils import train
+from clothes_dataset import ClothesDataset
 from build_models import get_pretrained_model
 
 from torchvision import transforms
@@ -38,7 +38,7 @@ if __name__ == "__main__":
 
   BS=16
   EPOCHS = 10
-  data = pd.read_csv('/content/drive/MyDrive/fashion_dataset/filtered_data.csv')#, header = 'infer',error_bad_lines = False)
+  data = pd.read_csv('data/fashion_dataset/filtered_data.csv')#, header = 'infer',error_bad_lines = False)
 
   classes = data['articleType'].unique().tolist()
   label_dict = {val: idx for idx, val in enumerate(classes)}
@@ -56,7 +56,7 @@ if __name__ == "__main__":
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     ])
 
-  train_dataset = ClothesDataLoader(train_df,label_dict, transform=train_transform)
+  train_dataset = ClothesDataset(train_df,label_dict, transform=train_transform)
   train_dataloader = DataLoader(train_dataset, batch_size=BS, shuffle=True)
 
   valid_transform = transforms.Compose([
@@ -64,7 +64,7 @@ if __name__ == "__main__":
       transforms.ToTensor(),
       transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
   ])
-  valid_dataset = ClothesDataLoader(valid_df,label_dict, transform=valid_transform)
+  valid_dataset = ClothesDataset(valid_df,label_dict, transform=valid_transform)
   valid_dataloader = DataLoader(valid_dataset, batch_size=BS, shuffle=False)
 
   test_transform = transforms.Compose([
@@ -74,7 +74,7 @@ if __name__ == "__main__":
       transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
   ])
 
-  test_dataset = ClothesDataLoader(test_df,label_dict, transform=test_transform)
+  test_dataset = ClothesDataset(test_df,label_dict, transform=test_transform)
   test_dataloader = DataLoader(test_dataset, batch_size=BS, shuffle=False)
 
 
@@ -105,7 +105,7 @@ if __name__ == "__main__":
       optimizer,
       train_dataloader,
       valid_dataloader,
-      save_file_name='/content/model.pt',
+      save_file_name='models/model.pt',
       max_epochs_stop=5,
       n_epochs=EPOCHS,
       print_every=1)
