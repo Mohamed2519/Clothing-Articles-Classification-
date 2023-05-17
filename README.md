@@ -36,7 +36,9 @@ pip install -r requirements.txt
 ```
 3. **Data Preprocessing**
 ```shell
-python data_preprocessing.py
+cd src
+
+python data_preprocessing.py --imgs_per_cls 900 --vis False
 ```
 
   * Read `.csv` file of the dataset 
@@ -45,7 +47,7 @@ python data_preprocessing.py
   * add column for images directory
 4. **Training** 
 ```shell
-python main.py
+python main.py --model efficientnet --bs 16 --e 10 --imgsz 112
 ```
   * `clothes_dataset.py` Building DataLoader
   * Image size (112,112,3)
@@ -65,7 +67,16 @@ Train each network with configurations:
 
   `optimizer` SGD
 
-5. **Results**
+5. **Model Capacity**
+
+Using `flopth` library to calculate  `FLOPS` and `number of Parameters`
+
+```shell
+python model_capacity.py --model efficientnet --n_cls 11 --imgsz 112
+```
+
+
+6. **Results**
 
 
  _  | VGG16 | EfficientNet | DenseNet
