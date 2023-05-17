@@ -103,3 +103,4 @@ Param. |135.3 M | **4.0 M** | 6.9 M
 * Choose Large Dataset 
 * Train more EPOCHS to get best accuracy
 * Apply different data augmentatoin techniques
+* Use different version of EfficientNet such as `EfficientNet-B7`
