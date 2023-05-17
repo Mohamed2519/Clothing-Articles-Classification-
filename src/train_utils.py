@@ -3,7 +3,28 @@ from timeit import default_timer as timer
 import torch
 import pandas as pd
 
-def train(model,criterion,optimizer,train_loader,valid_loader,save_file_name,
+def plot(history, state):
+  if state == "loss":
+    plt.figure(figsize=(8, 6))
+    for c in ['train_loss', 'valid_loss']:
+        plt.plot(
+            history[c], label=c)
+    plt.legend()
+    plt.xlabel('Epoch')
+    plt.ylabel('Average Negative Log Likelihood')
+    plt.title('Training and Validation Losses')
+
+  elif state == 'accuracy':
+    plt.figure(figsize=(8, 6))
+    for c in ['train_acc', 'valid_acc']:
+        plt.plot(
+            100 * history[c], label=c)
+    plt.legend()
+    plt.xlabel('Epoch')
+    plt.ylabel('Average Accuracy')
+    plt.title('Training and Validation Accuracy')
+
+def train_eval(model,criterion,optimizer,train_loader,valid_loader,save_file_name,
           max_epochs_stop=3,n_epochs=20,print_every=1, train_on_gpu= True):
     """Train a PyTorch Model
 

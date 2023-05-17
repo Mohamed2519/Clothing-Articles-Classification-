@@ -5,33 +5,12 @@ import torch.optim as optim
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from train_utils import train
+from train_utils import train_eval, plot
 from clothes_dataset import ClothesDataset
 from build_models import get_pretrained_model
 
 from torchvision import transforms
 from torch.utils.data import Dataset, DataLoader
-
-def plot(history, state):
-  if state == "loss":
-    plt.figure(figsize=(8, 6))
-    for c in ['train_loss', 'valid_loss']:
-        plt.plot(
-            history[c], label=c)
-    plt.legend()
-    plt.xlabel('Epoch')
-    plt.ylabel('Average Negative Log Likelihood')
-    plt.title('Training and Validation Losses')
-
-  elif state == 'accuracy':
-    plt.figure(figsize=(8, 6))
-    for c in ['train_acc', 'valid_acc']:
-        plt.plot(
-            100 * history[c], label=c)
-    plt.legend()
-    plt.xlabel('Epoch')
-    plt.ylabel('Average Accuracy')
-    plt.title('Training and Validation Accuracy')
 
 if __name__ == "__main__":
 
@@ -41,6 +20,7 @@ if __name__ == "__main__":
   data = pd.read_csv('data/fashion_dataset/filtered_data.csv')#, header = 'infer',error_bad_lines = False)
 
   classes = data['articleType'].unique().tolist()
+  num_classes = len(classes) 
   label_dict = {val: idx for idx, val in enumerate(classes)}
 
   train_df, test_df = train_test_split(data, test_size=0.2, random_state=42)
@@ -69,7 +49,6 @@ if __name__ == "__main__":
 
   test_transform = transforms.Compose([
       transforms.Resize((112,112)),
-      transforms.CenterCrop((112,112)),
       transforms.ToTensor(),
       transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
   ])
@@ -77,7 +56,7 @@ if __name__ == "__main__":
   test_dataset = ClothesDataset(test_df,label_dict, transform=test_transform)
   test_dataloader = DataLoader(test_dataset, batch_size=BS, shuffle=False)
 
-
+  # Sanity check for dataloaders 
   trainiter = iter(train_dataloader)
   features, labels = next(trainiter)
   print ('shape of train_dataloader for image',features.shape)
@@ -94,12 +73,14 @@ if __name__ == "__main__":
   print ('shape of test_dataloader for label',labels.shape)
   print('---------------------------------------')
 
-
-  model = get_pretrained_model('efficientnet',11)
+  # Build bodel
+  model = get_pretrained_model('efficientnet',num_classes)
 
   criterion = nn.CrossEntropyLoss()
   optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
-  model, history = train(
+  
+  #Start trainig
+  model, history = train_eval(
       model,
       criterion,
       optimizer,

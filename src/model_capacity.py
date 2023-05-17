@@ -1,6 +1,7 @@
 from flopth import flopth
 from build_models import get_pretrained_model
 
+
 if __name__ == "__main__":
     models = ['vgg16','densenet','efficientnet']
     model = get_pretrained_model(models[2],11)
