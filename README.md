@@ -30,7 +30,7 @@ Calculate FLOPS and MACCs for each model using `flopth` library
 ## Steps
 1. **Install Requirements**
 ```shell
-pip install -r Requirements.txt
+pip install -r requirements.txt
 ```
 2. **Data Preprocessing**
 ```shell
