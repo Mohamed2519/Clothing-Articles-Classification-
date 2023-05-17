@@ -3,7 +3,7 @@ Clothes classification using various models.
 
 In this Repo, I Use Famous deepleaning architectures for image classification such as  `VGG16`, `Densenet121`,and `Efficientnetb0`.
  Training on 
- [Fashion Product Images (Small)Dataset](https://www.kaggle.com/datasets/paramaggarwal/fashion-product-images-small)
+ [Fashion Product Images (Small) Dataset](https://www.kaggle.com/datasets/paramaggarwal/fashion-product-images-small)
 
 
 Calculate FLOPS and MACCs for each model using `flopth` library
