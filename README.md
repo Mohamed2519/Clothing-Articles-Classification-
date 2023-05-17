@@ -45,6 +45,8 @@ python data_preprocessing.py --imgs_per_cls 900 --vis False
   * filter dataset from minor classes (less than 900 images) to avoid data imbalance.
   * after filteration it becomes 11 classes
   * add column for images directory
+
+
 4. **Training** 
 ```shell
 python main.py --model efficientnet --bs 16 --e 10 --imgsz 112
@@ -55,21 +57,24 @@ python main.py --model efficientnet --bs 16 --e 10 --imgsz 112
   * `build_models.py` for building models  
   * `train_utils.py` contain the main function for `Train` & `Eval`
 
+
   **Crateria of training**:
-For choosing the best and proper model, I choose `Accuracy` as a metric of Evaluation.
-Train each network with configurations:
+  For choosing the best and proper model, I choose `Accuracy` as a metric of Evaluation.
+  Train each network with configurations:
 
-  `Batch Size` = 16
+    `Batch Size` = 16
 
-  `Epochs` = 10
+    `Epochs` = 10
 
-  `Input Image Size` = (112, 112, 3)
+    `Input Image Size` = (112, 112, 3)
 
-  `optimizer` SGD
+    `optimizer` SGD
+
+
 
 5. **Model Capacity**
 
-Using `flopth` library to calculate  `FLOPS` and `number of Parameters`
+  Using `flopth` library to calculate  `FLOPS` and `number of Parameters`
 
 ```shell
 python model_capacity.py --model efficientnet --n_cls 11 --imgsz 112
@@ -85,13 +90,13 @@ Accuracy | **86.88%**| 84.28%|83.12%
 FLOPS | 3.9 G |**0.1 G** |0.7 G
 Param. |135.3 M | **4.0 M** | 6.9 M
 
-From previous table, `VGG16` has higher accuracy among models. 
+  From previous table, `VGG16` has higher accuracy among models. 
 
-However, you can use `EfficientNet` with less parameters and FLOPS copmared to other models. with little decreasing in accuracy.
+  However, you can use `EfficientNet` with less parameters and FLOPS copmared to other models. with little decreasing in accuracy.
 
-Crateria of Choosing model depends on the your application. There's a trade off between `speed` and `accuracy`
+  Crateria of Choosing model depends on the your application. There's a trade off between `speed` and `accuracy`
 
-In my Case study, I'll choose `EfficientNet`, It achieves a good balance between model size and performance
+  In my Case study, I'll choose `EfficientNet`, It achieves a good balance between model size and performance
 
 
 ## **Future Works**
