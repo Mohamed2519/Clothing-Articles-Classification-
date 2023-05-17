@@ -104,3 +104,9 @@ Param. |135.3 M | **4.0 M** | 6.9 M
 * Train more EPOCHS to get best accuracy
 * Apply different data augmentatoin techniques
 * Use different version of EfficientNet such as `EfficientNet-B7`
+
+## **Report** 
+
+This[report](https://docs.google.com/document/d/1DATIFjaQaOeX_naR5RgLoP5MnK2O1q8JFeYpzwgVlts/edit?usp=sharing) discuss `Receptive field` in genneral and specialy for `EfficientNet-B7`
+
+Also, discuss `FLOPs`, `FLOPS`, and `MACCs` in definition, calculation, How to reduce them.
