@@ -6,7 +6,7 @@ In this Repo, I Use Famous deepleaning architectures for image classification su
  [Fashion Product Images (Small) Dataset](https://www.kaggle.com/datasets/paramaggarwal/fashion-product-images-small)
 
 
-Calculate FLOPS and MACCs for each model using `flopth` library
+Calculate FLOPs and MACCs for each model using `flopth` library
 ## Models
 **`VGG16`** is a popular deep neural network architecture for image classification. It consists of 16 convolutional layers. It is known for its depth, simplicity, and strong performance in image classification tasks.
 ![picture](https://neurohive.io/wp-content/uploads/2018/11/vgg16-1-e1542731207177.png)
@@ -60,20 +60,20 @@ python src/main.py --model efficientnet --bs 16 --e 10 --imgsz 112
   **Crateria of training**:
   For choosing the best and proper model, I choose `Accuracy` as a metric of Evaluation.
   Train each network with configurations:
+  
+  `Batch Size` = 16
 
-    `Batch Size` = 16
+  `Epochs` = 10
 
-    `Epochs` = 10
+  `Input Image Size` = (112, 112, 3)
 
-    `Input Image Size` = (112, 112, 3)
-
-    `optimizer` SGD
+  `optimizer` SGD
 
 
 
 5. **Model Capacity**
 
-  Using `flopth` library to calculate  `FLOPS` and `number of Parameters`
+  Using `flopth` library to calculate  `FLOPs` and `number of Parameters`
 
 ```shell
 python src/model_capacity.py --model efficientnet --n_cls 11 --imgsz 112
@@ -86,7 +86,7 @@ python src/model_capacity.py --model efficientnet --n_cls 11 --imgsz 112
  _  | VGG16 | EfficientNet | DenseNet
 --- | --- | --- | ---
 Accuracy | **86.88%**| 84.28%|83.12%
-FLOPS | 3.9 G |**0.1 G** |0.7 G
+FLOPs | 3.9 G |**0.1 G** |0.7 G
 Param. |135.3 M | **4.0 M** | 6.9 M
 
   From previous table, `VGG16` has higher accuracy among models. 
