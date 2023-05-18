@@ -4,3 +4,5 @@ matplotlib
 Pillow
 torch
 scikit-learn
+argparse
+pytest-timeit
